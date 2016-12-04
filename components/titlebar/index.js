@@ -30,7 +30,7 @@ export default class App extends Component {
     }, this.props);
 
     return (
-      <View>
+      <View style={{flex:1}}>
         <StatusBar
           translucent={true}
           backgroundColor="rgba(0, 0, 0, 0)"
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
   // 标题栏
   boxView: {
     top: 0,
-    flex: 1,
+    // flex: 1,
     height: 46,
     paddingLeft: 10,
     paddingRight: 10,
