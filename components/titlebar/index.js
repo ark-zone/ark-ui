@@ -26,15 +26,19 @@ export default class App extends Component {
     const customStyle = Object.assign({
       title: 'TitleBar',
       backgroundColor: 'red',
-      fontColor: 'white',
+      titleColor: 'white',
+      shadowColor: '#000',
+      barStyle: "light-content"
     }, this.props);
 
     return (
-      <View style={{flex:1}}>
+      <View style={[styles.container, {
+        shadowColor: customStyle.shadowColor
+      }]}>
         <StatusBar
           translucent={true}
           backgroundColor="rgba(0, 0, 0, 0)"
-          barStyle="light-content"
+          barStyle={customStyle.barStyle}
         />
         <View
           style={[styles._statusbarView, {
@@ -45,7 +49,7 @@ export default class App extends Component {
             backgroundColor: customStyle.backgroundColor,
           }]}>
           {this._renderLeftButton()}
-          {this._renderTitle(customStyle.title, customStyle.fontColor)}
+          {this._renderTitle(customStyle.title, customStyle.titleColor)}
           {this._renderRightButton()}
         </View>
       </View>
@@ -108,6 +112,15 @@ export default class App extends Component {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.4,
+    shadowRadius: 1,
+    marginBottom: 2,
+  },
   // 一个高度20的空view,用于隔离于顶部的距离
   _statusbarView: {
     height: 20,
